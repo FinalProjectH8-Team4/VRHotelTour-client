@@ -1,1 +1,0 @@
-# VRHotelTour-client

@@ -10,7 +10,7 @@ function Home ({ navigation }) {
             <Text style={{marginBottom: 15}}>InepInn</Text>
             <TouchableOpacity style={styles.button} onPress={onPressEnter}>
                 <Text style={styles.buttonText}>Enter</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> 
         </View> 
     )
 }

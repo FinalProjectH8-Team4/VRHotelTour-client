@@ -1,9 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
-import thunk from 'react-redux'
-
-function reducer (state, actions) {
-    return state
-}
+import thunk from 'redux-thunk'
+import reducer from './reducers/index'
 
 const store = createStore(reducer, applyMiddleware(thunk))
 

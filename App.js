@@ -6,19 +6,23 @@ import store from './src/store/index'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from './src/screens/Home'
+import HotelFacility from './src/screens/HotelFacility'
 
 const Stack = createStackNavigator()
 
 export default function App() {
   return (
-  <Provider store={store}>
-    <NavigationContainer>
-      <Stack.Navigator>
-          <StatusBar style="auto" />
-          <Stack.Screen name="Home" component={{Home}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  </Provider>
+    <Provider store={store}>
+      <StatusBar/>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{
+          headerStyle: { elevation: 0 },
+          cardStyle: { backgroundColor: '#ffffff' }}}>
+            <Stack.Screen name="Home" component={Home}/>
+            <Stack.Screen name="Facility" component={HotelFacility}/>
+        </Stack.Navigator >
+      </NavigationContainer>
+    </Provider>
   );
 }
 

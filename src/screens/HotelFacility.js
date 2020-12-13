@@ -9,15 +9,17 @@ function HotelFacility () {
 
     useEffect(() => {
         dispatch(FetchAllHotels())
-    }, [dispatch])
+    }, [])
+
+    useEffect(() => {
+        if(hotels) {
+            console.log(hotels)
+        }
+    }, [hotels])
 
     return (
         <View>
-            {
-                hotels.map(el => {
-                    return  <Text key={el._id}>{JSON.stringify(el)}</Text>
-                })
-            }
+             <Text>{JSON.stringify(hotels)}</Text>
         </View>
     )
 }

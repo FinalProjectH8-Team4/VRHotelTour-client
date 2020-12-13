@@ -1,14 +1,13 @@
-import axios from '../../../config/axiosInstance'
+// import axios from '../../../config/axiosInstance'
+const baseURL = 'http://localhost:3000'
 
 export const FetchAllHotels = () => {
+    console.log('uphere')
     return (dispatch) => {
-        axios({
-            method: 'GET',
-            url: '/'
-        })
+        fetch(baseURL+'/')
+        .then(response => response.json())
         .then(data => {
-            console.log(data)
-            dispatch({ type: SET_ALL_HOTELS, payload: data })
+            dispatch({type: 'SET_ALL_HOTELS', payload: data})
         })
         .catch(err => {
             console.log(err)

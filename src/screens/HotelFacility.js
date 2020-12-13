@@ -9,13 +9,7 @@ function HotelFacility () {
 
     useEffect(() => {
         dispatch(FetchAllHotels())
-    }, [])
-
-    useEffect(() => {
-        if(hotels) {
-            console.log(hotels)
-        }
-    }, [hotels])
+    }, [dispatch])
 
     return (
         <View>

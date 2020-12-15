@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { StyleSheet, Text, ScrollView, Dimensions, Image, View } from 'react-native';
+import { StyleSheet, Text, ScrollView, Dimensions, ImageBackground, View } from 'react-native';
 import {fetchHotelById} from '../store/actions/actionHotels'
 import ImageComponent from '../components/imageComponent'
 import {Carousel} from 'nachos-ui'
@@ -31,21 +31,37 @@ export default function Booking(){
 
 
     return (
-        <View style={styles.container}>
-            <Text style={{fontStyle: 'italic', fontSize: 30, color: '#4d3572', textAlign: 'left', marginBottom: 10, marginTop: 100}}>Inep<Text style={{fontWeight: 'bold'}}>Inn</Text></Text>
-            <View>
-                <ScrollView>
-                    <Carousel>
-                    {images.map((image, index)=>(
-                        <ImageComponent key={index} uri={image.uri} name={image.name} desc={image.desc}/>
-                    ))}
-                    </Carousel>
-                </ScrollView>
-                <Text style={{marginBottom: 150, textAlign: 'justify', padding: 30}}>
-                Enjoy an exceptional stay in the Jakarta city center. In addition to room and suite accommodation, 
-                fully equipped to meet the needs of the modern corporate and leisure traveler. Featuring a swimming pool, 
-                Fitness and Spa, private Executive Lounge, Bar, Cafe, and Restaurant.
-                </Text>
+        <View style={{flex: 1, backgroundColor: 'white'}}>
+            <Text style={{fontStyle: 'italic', fontSize: 30, color: '#4d3572', textAlign: 'left', marginBottom: 10, marginTop: 20, marginLeft: 10}}>Inep<Text style={{fontWeight: 'bold'}}>Inn</Text></Text>
+            <View style={styles.container}>
+                <View>
+                    <ScrollView>
+                        <Carousel>
+                        {images.map((image, index)=>(
+                            <ImageComponent key={index} uri={image.uri} name={image.name} desc={image.desc}/>
+                        ))}
+                        </Carousel>
+                    </ScrollView>
+                    <Text style={{color: '#4d3572', fontSize: 20, textAlign: 'left', marginLeft: 10}}>Explore Our Rooms In <Text style={{fontWeight: 'bold'}}>VR</Text></Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <View style={{flexDirection: 'column'}}>
+                        <ImageBackground source={require('../assets/rooms/superior.jpg')} style={styles.rooms}>
+                            <Text style={styles.roomText}>Superior Room</Text>
+                        </ImageBackground>
+                        <ImageBackground source={require('../assets/rooms/deluxe.jpg')} style={styles.rooms}>
+                            <Text style={styles.roomText}>Deluxe Room</Text>
+                        </ImageBackground>
+                        </View>
+                        <View style={{flexDirection: 'column'}}>
+                        <ImageBackground source={require('../assets/rooms/premier.jpg')} style={styles.rooms}>
+                            <Text style={styles.roomText}>Premier Room</Text>
+                        </ImageBackground>
+                        <ImageBackground source={require('../assets/rooms/family.jpg')} style={styles.rooms}>
+                            <Text style={styles.roomText}>Family Room</Text>
+                        </ImageBackground>
+                        </View>
+                    </View>
+                </View>
             </View>
         </View>
     )
@@ -53,9 +69,23 @@ export default function Booking(){
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center'
+        flex: 1,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    rooms: {
+        width: widthValue/2 -20, 
+        height: 100, 
+        borderRadius: 10,
+        margin: 10
+    },
+    roomText: {
+        color: 'white', 
+        fontWeight: 'bold', 
+        alignItems: 'center', 
+        textAlign: 'center',
+        paddingTop: "23%",
+        fontSize: 16
     }
 });

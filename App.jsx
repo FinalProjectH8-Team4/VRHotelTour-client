@@ -19,10 +19,10 @@ export default function App() {
       <StatusBar/>
       <NavigationContainer>
         <Stack.Navigator>
-          {/* <Stack.Screen name="Dashboard" component={SplashScreen}/>
-          <Stack.Screen name='Facilities' component={Facilities} /> */}
+          {/* <Stack.Screen name="Dashboard" component={SplashScreen}/> */}
+          <Stack.Screen name='Facilities' component={Facilities} />
           {/* <Stack.Screen name='RoomView' component={RoomView} /> */}
-          <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/>
+          {/* <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/> */}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

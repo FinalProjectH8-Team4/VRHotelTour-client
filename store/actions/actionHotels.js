@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = "http://192.168.100.40:3000"
+const baseUrl = "http://192.168.100.7:3001"
 export const fetchHotelById = (id) => {
     return (dispatch) => {
       axios.get(`${baseUrl}/${id}`)

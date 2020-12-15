@@ -5,6 +5,7 @@ function Home ({ navigation }) {
     function onPressEnter () {
         navigation.navigate("Facility")
     }
+    
     return (
         <View style={{justifyContent: 'center', alignItems: 'center', height: '100%'}}>
             <Text style={{marginBottom: 15}}>InepInn</Text>

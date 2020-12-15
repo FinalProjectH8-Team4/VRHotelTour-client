@@ -23,10 +23,10 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator 
           screenOptions={{headerShown: false}}
-          initialRouteName='Dashboard'>          
+          initialRouteName='SplashScreen'>       
+          <Stack.Screen name='SplashScreen' component={SplashScreen} />             
           <Stack.Screen name='Facilities' component={Facilities} />
           <Stack.Screen name='Dashboard' component={Dashboard} />
-          <Stack.Screen name='Booking' component={Booking} />
           <Stack.Screen name='RoomView' component={RoomView} />
           <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/>
         </Stack.Navigator>

@@ -1,5 +1,6 @@
 import axios from 'axios'
-const baseUrl = "http://192.168.1.15:3001"
+const baseUrl = "http://192.168.100.7:3002"
+
 export const fetchHotelById = (id) => {
     return (dispatch) => {
       axios.get(`${baseUrl}/${id}`)
@@ -13,4 +14,19 @@ export const fetchHotelById = (id) => {
         console.log(err);
       })
     }
+}
+
+export const bookByMail = (emailAddress) => {
+  console.log('dispatched');
+  return (dispatch) => {
+    axios.post(`${baseUrl}/bookroom`,{
+      emailAddress
+    })
+    .then(({data})=>{
+      console.log(data)
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
 }

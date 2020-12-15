@@ -8,7 +8,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function RoomView({navigation}){
  
   function navigateTo(){
-    navigation.navigate('')
+    navigation.navigate('BookingConfirmation')
   }
 
   return(

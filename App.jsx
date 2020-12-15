@@ -7,6 +7,8 @@ import { StatusBar } from 'react-native'
 import store from './store'
 import Facilities from './screens/Facilities'
 import RoomView from './screens/RoomView';
+import Dashboard from './screens/Dashboard';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import BookingConfirmation from './screens/BookingConfirmation'
 import SplashScreen from './screens/SplashScreen'
 
@@ -17,14 +19,19 @@ export default function App() {
   return (
     <Provider store={store}>
       <StatusBar/>
+      <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator>
-          {/* <Stack.Screen name="Dashboard" component={SplashScreen}/> */}
+        <Stack.Navigator 
+          screenOptions={{headerShown: false}}
+          initialRouteName='Dashboard'>          
           <Stack.Screen name='Facilities' component={Facilities} />
-          {/* <Stack.Screen name='RoomView' component={RoomView} /> */}
-          {/* <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/> */}
+          <Stack.Screen name='Dashboard' component={Dashboard} />
+          <Stack.Screen name='Booking' component={Booking} />
+          <Stack.Screen name='RoomView' component={RoomView} />
+          <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/>
         </Stack.Navigator>
       </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }

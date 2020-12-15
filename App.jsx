@@ -6,6 +6,8 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Booking from './screens/Booking'
 import RoomView from './screens/RoomView';
+import Dashboard from './screens/Dashboard';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import BookingConfirmation from './screens/BookingConfirmation'
 
 
@@ -14,13 +16,19 @@ const Stack = createStackNavigator()
 export default function App() {
   return (
     <Provider store={store}>
+      <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Booking'>
-          {/* <Stack.Screen name='Booking' component={Booking} /> */}
-          {/* <Stack.Screen name='RoomView' component={RoomView} /> */}
+        <Stack.Navigator 
+          screenOptions={{headerShown: false}}
+          initialRouteName='Dashboard'>
+          
+          <Stack.Screen name='Dashboard' component={Dashboard} />
+          <Stack.Screen name='Booking' component={Booking} />
+          <Stack.Screen name='RoomView' component={RoomView} />
           <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/>
         </Stack.Navigator>
       </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }

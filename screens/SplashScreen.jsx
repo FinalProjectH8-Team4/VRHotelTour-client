@@ -1,31 +1,60 @@
 import React from 'react'
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, ImageBackground, Dimensions } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
+
+const widthValue = Dimensions.get('window').width
+const heightValue = Dimensions.get('window').height
+const image = { uri: 'https://images.pexels.com/photos/1662159/pexels-photo-1662159.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
 
 function Home ({ navigation }) {
     function onPressEnter () {
-        navigation.navigate("Facility")
+        navigation.navigate("Facilities")
     }
     
     return (
-        <View style={{justifyContent: 'center', alignItems: 'center', height: '100%'}}>
-            <Text style={{marginBottom: 15}}>InepInn</Text>
-            <TouchableOpacity style={styles.button} onPress={onPressEnter}>
-                <Text style={styles.buttonText}>Enter</Text>
-            </TouchableOpacity> 
+        <View style={styles.container}>
+            <ImageBackground source={image} style={styles.backgroundImage}>
+                <LinearGradient colors={['transparent', '#4d3572']} style={styles.backgroundGradient}/>
+                <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{fontStyle: 'italic', fontSize: 30, color: 'white', marginTop: heightValue-180}}>Inep<Text style={{fontWeight: 'bold'}}>Inn</Text></Text>
+                    <TouchableOpacity style={styles.button} onPress={onPressEnter}>
+                        <Text style={styles.buttonText}>Enter</Text>
+                    </TouchableOpacity> 
+                </View>
+            </ImageBackground>
         </View> 
     )
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
     button: {
-        backgroundColor: 'blue', 
+        backgroundColor: 'white', 
         padding: 8, 
-        width: 70, 
-        borderRadius: 5
+        width: widthValue/2, 
+        borderRadius: 5,
+        marginTop: 10
     },
     buttonText: {
-        color: 'white', 
-        textAlign: 'center'
+        color: '#4d3572', 
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    backgroundImage: {
+        flex: 1, 
+        resizeMode: 'stretch',
+        width: widthValue
+    },
+    backgroundGradient: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: heightValue/2,
+        marginTop: heightValue/2
     }
 })
 

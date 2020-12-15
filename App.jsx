@@ -8,6 +8,7 @@ import Booking from './screens/Booking'
 import RoomView from './screens/RoomView';
 import Dashboard from './screens/Dashboard';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import BookingConfirmation from './screens/BookingConfirmation'
 
 
 const Stack = createStackNavigator()
@@ -24,8 +25,7 @@ export default function App() {
           <Stack.Screen name='Dashboard' component={Dashboard} />
           <Stack.Screen name='Booking' component={Booking} />
           <Stack.Screen name='RoomView' component={RoomView} />
-
-
+          <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/>
         </Stack.Navigator>
       </NavigationContainer>
       </SafeAreaProvider>

@@ -13,7 +13,7 @@ export default function Booking(){
     const hotel = useSelector((state) => state.hotel)
 
     useEffect(()=>{
-        dispatch(fetchHotelById('5fd79a441f23dcdb038a18ff'))
+        dispatch(fetchHotelById('5fd83f9209fe494d61c1a7f2'))
     },[])
 
     useEffect(()=>{

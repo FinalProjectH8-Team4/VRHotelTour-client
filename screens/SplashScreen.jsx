@@ -7,6 +7,7 @@ const heightValue = Dimensions.get('window').height
 const image = { uri: 'https://images.pexels.com/photos/1662159/pexels-photo-1662159.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }
 
 function Home({ navigation }) {
+  
   function onPressEnter() {
     navigation.navigate("Facilities")
   }

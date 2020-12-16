@@ -8,13 +8,13 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 const widthValue = Dimensions.get('window').width
 
-export default function Booking({navigation}) {
+export default function Booking({ navigation }) {
   const dispatch = useDispatch()
   const [images, setImages] = useState([])
   const hotel = useSelector((state) => state.hotel)
 
   useEffect(() => {
-    dispatch(fetchHotelById('5fd83f9209fe494d61c1a7f2'))
+    dispatch(fetchHotelById('5fda34909538adab4b7c82ef'))
   }, [])
 
   useEffect(() => {
@@ -30,18 +30,19 @@ export default function Booking({navigation}) {
     }
   }, [hotel])
 
-  function navto(){
-    navigation.navigate('RoomView')
+  function navto(roomType) {
+    navigation.navigate('RoomView', { roomType })
   }
 
   return (
-    
+
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <LinearGradient colors={['#4d3572', 'transparent']}>
-      <Text style={{ fontStyle: 'italic', fontSize: 30, color: '#4d3572', textAlign: 'left', marginBottom: 10, marginTop: 40, marginLeft: 10 }}>Inep<Text style={{ fontWeight: 'bold' }}>Inn</Text></Text>
+        <Text style={{ fontStyle: 'italic', fontSize: 30, color: '#4d3572', textAlign: 'left', marginBottom: 10, marginTop: 40, marginLeft: 10 }}>Inep<Text style={{ fontWeight: 'bold' }}>Inn</Text></Text>
       </LinearGradient>
       <View style={styles.container}>
         <View>
+          <Text style={{ textAlign: "left", fontSize: 18, fontWeight: "bold", marginLeft: 10, marginBottom: 10, marginTop: 40, color: '#4d3572' }}>Our Facilitites</Text>
           <ScrollView>
             <Carousel>
               {images.map((image, index) => (
@@ -49,25 +50,45 @@ export default function Booking({navigation}) {
               ))}
             </Carousel>
           </ScrollView>
-          <Text style={{ color: '#4d3572', fontSize: 20, textAlign: 'left', marginLeft: 10 }}>Explore Our Rooms In <Text style={{ fontWeight: 'bold',fontStyle:'italic' }}>VR</Text></Text>
+          <Text style={{ color: '#4d3572', fontSize: 20, textAlign: 'left', marginLeft: 10 }}>Explore Our Rooms In <Text style={{ fontWeight: 'bold', fontStyle: 'italic' }}>VR</Text></Text>
           <View style={{ flexDirection: 'row', marginBottom: 40 }}>
-            <TouchableWithoutFeedback onPress={navto}>
-              <View style={{ flexDirection: 'column' }}>
-                <ImageBackground source={require('../assets/rooms/superior.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
-                  <Text style={styles.roomText}>Superior Room</Text>
-                </ImageBackground>
-                <ImageBackground source={require('../assets/rooms/duluxe.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
-                  <Text style={styles.roomText}>Deluxe Room</Text>
-                </ImageBackground>
-              </View>
-            </TouchableWithoutFeedback>
             <View style={{ flexDirection: 'column' }}>
-              <ImageBackground source={require('../assets/rooms/premier.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
-                <Text style={styles.roomText}>Premier Room</Text>
-              </ImageBackground>
-              <ImageBackground source={require('../assets/rooms/family.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
-                <Text style={styles.roomText}>Family Room</Text>
-              </ImageBackground>
+              <TouchableWithoutFeedback onPress={() => navto('superior')}>
+                <View>
+                  <ImageBackground source={require('../assets/rooms/superior.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6 }}>
+                  </ImageBackground>
+                  <Text style={styles.roomText}>Superior Room</Text>
+                  <View style={styles.overlay} />
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => navto('deluxe')}>
+                <View>
+                  <ImageBackground source={require('../assets/rooms/duluxe.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6 }}>
+                  </ImageBackground>
+                  <Text style={styles.roomText}>Deluxe Room</Text>
+                  <View style={styles.overlay} />
+
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
+            <View style={{ flexDirection: 'column' }}>
+              <TouchableWithoutFeedback onPress={() => navto('premier')}>
+                <View>
+                  <ImageBackground source={require('../assets/rooms/premier.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6 }}>
+                  </ImageBackground>
+                  <Text style={styles.roomText}>Premier Room</Text>
+                  <View style={styles.overlay} />
+
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => navto('family')}>
+                <View>
+                  <ImageBackground source={require('../assets/rooms/family.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6 }}>
+                  </ImageBackground>
+                  <Text style={styles.roomText}>Family Room</Text>
+                  <View style={styles.overlay} />
+                </View>
+              </TouchableWithoutFeedback>
             </View>
           </View>
         </View>
@@ -87,14 +108,31 @@ const styles = StyleSheet.create({
     width: widthValue / 2 - 20,
     height: 100,
     borderRadius: 10,
-    margin: 10
+    margin: 10,
+    zIndex: 1
   },
   roomText: {
+    ...StyleSheet.absoluteFillObject,
+    textShadowColor: 'rgba(0,0,0,0.5)',
+    textShadowOffset: {
+      width: 2,
+      height: 2
+    },
+    textShadowRadius: 2,
     color: 'white',
     fontWeight: 'bold',
     alignItems: 'center',
     textAlign: 'center',
     paddingTop: "23%",
-    fontSize: 16
+    fontSize: 16,
+    zIndex: 5
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    margin: 10,
+    borderRadius: 10,
+    zIndex: 2
+
   }
 });

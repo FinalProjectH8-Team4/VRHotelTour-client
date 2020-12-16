@@ -1,5 +1,6 @@
 import axios from 'axios'
-const baseUrl = "http://192.168.1.15:3001"
+import { EventRegister } from 'react-native-event-listeners'
+const baseUrl = "http://13.212.173.127:3001"
 
 export const fetchHotelById = (id) => {
     return (dispatch) => {
@@ -17,16 +18,17 @@ export const fetchHotelById = (id) => {
 }
 
 export const bookByMail = (emailAddress) => {
+  console.log(emailAddress);
   console.log('dispatched');
   return (dispatch) => {
     axios.post(`${baseUrl}/bookroom`,{
       emailAddress
     })
     .then(({data})=>{
-      console.log(data)
+      EventRegister.emit('booking_success', 'Thank you for reaching out to us, we will contact you soon!')
     })
     .catch(err=>{
-      console.log(err);
+      EventRegister.emit('booking_failed', err)
     })
   }
 }

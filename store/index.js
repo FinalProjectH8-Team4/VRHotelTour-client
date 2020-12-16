@@ -2,16 +2,17 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 const initialState = {
-    hotel: {}
+  hotel: {},
+  isBookingSuccess: false
 }
 
 function reducer(state = initialState, action) {
-    switch (action.type) {
-        case 'SET_HOTEL_BY_ID':
-            return { ...state, hotel: action.payload }
-        default:
-            return state
-    }
+  switch (action.type) {
+    case 'SET_HOTEL_BY_ID':
+      return { ...state, hotel: action.payload }      
+    default:
+      return state
+  }
 }
 
 const store = createStore(reducer, applyMiddleware(thunk))

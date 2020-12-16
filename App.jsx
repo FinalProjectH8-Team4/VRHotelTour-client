@@ -18,19 +18,17 @@ const Stack = createStackNavigator()
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar/>
+      <StatusBar />
       <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator 
-          screenOptions={{headerShown: false}}
-          initialRouteName='SplashScreen'>       
-          <Stack.Screen name='SplashScreen' component={SplashScreen} />             
-          <Stack.Screen name='Facilities' component={Facilities} />
-          <Stack.Screen name='Dashboard' component={Dashboard} />
-          <Stack.Screen name='RoomView' component={RoomView} />
-          <Stack.Screen name="BookingConfirmation" component={BookingConfirmation}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName='SplashScreen'>
+            <Stack.Screen name='SplashScreen' component={SplashScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Facilities' component={Facilities} options={{ headerShown: false }} />
+            <Stack.Screen name='RoomView' component={RoomView} options={{ title: '', headerTransparent: true }} />
+            <Stack.Screen name="BookingConfirmation" component={BookingConfirmation} options={{ title: '', headerTransparent: true }} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </SafeAreaProvider>
     </Provider>
   );

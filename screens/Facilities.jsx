@@ -4,6 +4,7 @@ import { StyleSheet, Text, ScrollView, Dimensions, ImageBackground, View, Toucha
 import { fetchHotelById } from '../store/actions/actionHotels'
 import ImageComponent from '../components/imageComponent'
 import { Carousel } from 'nachos-ui'
+import { LinearGradient } from 'expo-linear-gradient'
 
 const widthValue = Dimensions.get('window').width
 
@@ -31,12 +32,14 @@ export default function Booking({navigation}) {
 
   function navto(){
     navigation.navigate('RoomView')
-
   }
 
   return (
+    
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <Text style={{ fontStyle: 'italic', fontSize: 30, color: '#4d3572', textAlign: 'left', marginBottom: 10, marginTop: 20, marginLeft: 10 }}>Inep<Text style={{ fontWeight: 'bold' }}>Inn</Text></Text>
+      <LinearGradient colors={['#4d3572', 'transparent']}>
+      <Text style={{ fontStyle: 'italic', fontSize: 30, color: '#4d3572', textAlign: 'left', marginBottom: 10, marginTop: 40, marginLeft: 10 }}>Inep<Text style={{ fontWeight: 'bold' }}>Inn</Text></Text>
+      </LinearGradient>
       <View style={styles.container}>
         <View>
           <ScrollView>
@@ -47,22 +50,22 @@ export default function Booking({navigation}) {
             </Carousel>
           </ScrollView>
           <Text style={{ color: '#4d3572', fontSize: 20, textAlign: 'left', marginLeft: 10 }}>Explore Our Rooms In <Text style={{ fontWeight: 'bold',fontStyle:'italic' }}>VR</Text></Text>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: 'row', marginBottom: 40 }}>
             <TouchableWithoutFeedback onPress={navto}>
               <View style={{ flexDirection: 'column' }}>
-                <ImageBackground source={require('../assets/rooms/superior.jpg')} style={styles.rooms}>
+                <ImageBackground source={require('../assets/rooms/superior.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
                   <Text style={styles.roomText}>Superior Room</Text>
                 </ImageBackground>
-                <ImageBackground source={require('../assets/rooms/deluxe.jpg')} style={styles.rooms}>
+                <ImageBackground source={require('../assets/rooms/duluxe.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
                   <Text style={styles.roomText}>Deluxe Room</Text>
                 </ImageBackground>
               </View>
             </TouchableWithoutFeedback>
             <View style={{ flexDirection: 'column' }}>
-              <ImageBackground source={require('../assets/rooms/premier.jpg')} style={styles.rooms}>
+              <ImageBackground source={require('../assets/rooms/premier.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
                 <Text style={styles.roomText}>Premier Room</Text>
               </ImageBackground>
-              <ImageBackground source={require('../assets/rooms/family.jpg')} style={styles.rooms}>
+              <ImageBackground source={require('../assets/rooms/family.jpg')} style={styles.rooms} imageStyle={{ borderRadius: 6}}>
                 <Text style={styles.roomText}>Family Room</Text>
               </ImageBackground>
             </View>

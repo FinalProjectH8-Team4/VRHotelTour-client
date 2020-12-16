@@ -37,23 +37,6 @@ export default function Booking() {
           <ImageComponent key={index} uri={image.uri} desc={image.desc} />
         ))}
       </Carousel>
-      {/* <Carousel
-        data={images}
-        ref={(c) => { this._carousel = c; }}
-        renderItem={renderItem}
-        sliderWidth={widthValue}
-        itemWidth={widthValue}
-        autoplay={true}
-        loop={true}
-        /> */}
-      {/* <Carousel>
-          {hotel.facilities.map((facility, index)=> (
-              <div key={index}>
-                  <img src={facility.images[0]}/>
-                  <p className="legend">{facility.name}</p>
-              </div>
-          ))}
-      </Carousel> */}
     </ScrollView>
   )
 }
